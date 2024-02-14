@@ -1,13 +1,14 @@
 <%- include("partials/header.ejs") %>
-
-<div class="col-md-8">
-    <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        <%= blogData[0].blogTitle %>
-    </h3>
-    <article class="blog-post">
-      <p class="blog-post-meta"> <%= blogData[0].today %></p>
-      <p><%= blogData[0].blogBody %></p>
-    </article>
-  </div>
+<form action="/composer" method="POST">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="text" class="form-control" name="blogTitleInput" id="blogTitleInput" placeholder="Write Your Blog Title">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea class="form-control" name="blogBodyInput" id="blogBodyInput" rows="20" placeholder="Write Your Blog Here"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 <%- include("partials/footer.ejs") %>

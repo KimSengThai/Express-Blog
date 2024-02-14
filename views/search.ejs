@@ -3,7 +3,7 @@
 <div class="container">
   <div class="p-4 p-md-5 mb-4 mt-4 rounded text-body-emphasis bg-body">
     <div>
-      <h4 class="fst-italic">Recent posts</h4>
+      <h4 class="fst-italic">Search Result</h4>
       <ul class="list-unstyled border-bottom">
         <% data.forEach(element => { %>
         <li>
@@ -17,10 +17,8 @@
                 </div>
               </a>
             <div class="d-flex gap-2 col-2">
-              <a class="btn btn-secondary px-3" href="/postedit/<%= element._id %>" type="button">Edit</a>
-              <form action="/postdelete/<%= element._id %>?_method=DELETE" method="post">
-                <input type="submit" value="Delete" class="btn btn-danger">
-              </form>
+              <a class="btn btn-secondary px-3" href="/postedit" type="button">Edit</a>
+              <button class="btn btn-danger px-3" type="button">Delete</button>
             </div>
           </div>
         </li>

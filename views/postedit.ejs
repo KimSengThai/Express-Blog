@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+<form action="/postedit/<%= data._id %>?_method=PUT" method="post">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="blogTitleInput" value="<%= data.title %>">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea class="form-control" name="body" id="blogBodyInput" rows="20"><%= data.body %></textarea>
+    </div>
+    <input type="submit" value="Update" class="btn btn-primary">
+</form>
+
+<div class="mt-5">
+    <form action="/postdelete/<%= data._id %>?_method=DELETE" method="post">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
+</div>
+
+
+
+<%- include("partials/footer.ejs") %>
