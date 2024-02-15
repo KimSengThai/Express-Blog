@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import methodOverride from 'method-override';
 
-
 const app = express();
 const port = 3000;
 const currentDate = new Date().toDateString();
@@ -73,6 +72,7 @@ app.get("/post/:id", async (req, res) => {
 
     const data = await Post.findById({ _id: slug});
     res.render("post.ejs", {data: data});
+    // res.json(data), do this for API as json server
   } catch(error) {
     console.log(error);
   }
@@ -130,7 +130,9 @@ app.get("/postedit/:id", async (req, res) => {
 // Put edit route
 app.put("/postedit/:id", async (req, res) => {
   try{
-    await Post.findByIdAndUpdate(req.params.id, {
+    let slug = req.params.id;
+
+    await Post.findByIdAndUpdate(slug, {
       title: req.body.title,
       body: req.body.body,
       updatedAt: Date.now()
@@ -142,6 +144,7 @@ app.put("/postedit/:id", async (req, res) => {
 });
 
 // Delete post
+// Add another prompt for delete
 app.delete("/postdelete/:id", async (req, res) => {
   try {
     let slug = req.params.id;
